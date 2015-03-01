@@ -101,6 +101,9 @@ new rating value from authenticated user.
 ```erb
 <%# show.html.erb -> /cars/1 %>
 
+#Without dimension
+<%= rating_for @car %>
+
 Speed : <%= rating_for @car, "speed" %>
 Engine : <%= rating_for @car, "engine" %>
 Price : <%= rating_for @car, "price" %>
