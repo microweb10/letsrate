@@ -1,14 +1,11 @@
-# Letsrate Rating Gem
+# Fork from Letsrate Rating Gem
 
 Provides the best way to add rating capabilites to your Rails application with jQuery Raty plugin.
 
-[![Build Status](https://secure.travis-ci.org/muratguzel/letsrate.png)](http://travis-ci.org/muratguzel/letsrate)
-[![Dependency Status](https://gemnasium.com/muratguzel/letsrate.png)](https://gemnasium.com/muratguzel/letsrate)
-[![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/muratguzel/letsrate)
+## New Features
 
-### Future Of The Letsrate Gem
-
-This gem will be updated on very early 2015  with many features. :) You can send me a message if you want to be a part of it. 
+* Add support for Rails 4 (rails generator letsrate model_name)
+* Store average rating in the model to reduce the database query impact considerably
 
 ## Instructions
 
@@ -63,6 +60,36 @@ Then you need to add a call letsrate_rater in the user model.
 ```ruby
 class User < ActiveRecord::Base
   letsrate_rater
+end
+```
+
+### Caching
+
+Add the cache column/columns to the model (for rating with dimensions)
+```
+rails g migration AddRatingAveragesToCars
+```
+
+```ruby
+class AddRatingAveragesToCars < ActiveRecord::Migration
+  def change
+    add_column :cars, :speed_rating_average, :float, :default => 0
+    add_column :cars, :engine_rating_average, :float, :default => 0
+    add_column :cars, :price_rating_average, :float, :default => 0
+  end
+end
+```
+
+Add the cache column/columns to the model (for rating without dimension)
+```
+rails g migration AddRatingAverageToCars
+```
+
+```ruby
+class AddRatingAverageToCars < ActiveRecord::Migration
+  def change
+    add_column :cars, :rating_average, :float, :default => 0
+  end
 end
 ```
 
