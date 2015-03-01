@@ -14,7 +14,7 @@ Provides the best way to add rating capabilites to your Rails application with j
 Add the letsrate gem into your Gemfile
 
 ```ruby
-gem 'letsrate'
+gem 'letsrate', git: 'git@github.com:microweb10/letsrate.git'
 ```
 
 ### Generate
